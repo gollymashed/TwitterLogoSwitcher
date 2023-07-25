@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Popup</title>
-    <link rel="stylesheet" type="text/css" href="css/popup.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="popup">
-            <div class="popup-header">
-                <h3>de-x</h3>
-            </div>
-            <div class="popup-body">
-                <p>"Revert all '𝕏' branding and pretend this never happened."</p>
-                <div class="settings">
-                    <h4>Enabled</h4>
-                    <button id="enabled-toggle" class="btn btn-toggle">
-                        <span id="enabled-toggle-icon"></span>
-                    </button>
-                    <h4>Choose Your Logo</h4>
-                    <button id="twitter-logo-button" class="btn btn-logo"></button>
-                    <button id="wassie-logo-button" class="btn btn-logo"></button>
-                </div>
-            </div>
-            <div class="popup-footer">
-                <p>Created by <a href="https://twitter.com/gollymashed" target="_blank">@gollymashed</a></p>
-            </div>
+      <div class="popup">
+        <div class="popup-header">
+          <h3>de-x</h3>
         </div>
+        <div class="popup-body">
+          <p>"Revert all '𝕏' branding and pretend this never happened."</p>
+          <div class="settings">
+            <h4>Enabled</h4>
+            <button id="enabled-toggle" class="btn btn-toggle">
+              <img src="" alt="Enabled Status" id="enabled-status-icon" class="btn-image" />
+              <span></span>
+            </button>
+            <h4>Choose Your Logo</h4>
+            <label class="logo-label" id="twitter-logo-label">
+              <input type="radio" name="logo" value="twitter" checked />
+              <div id="twitter-logo-wrapper"></div>
+            </label>
+            <label class="logo-label" id="wassie-logo-label">
+              <input type="radio" name="logo" value="wassie" />
+              <div id="wassie-logo-wrapper"></div>
+            </label>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <p>
+            Created by
+            <a href="https://twitter.com/gollymashed" target="_blank"
+              >@gollymashed</a
+            >
+          </p>
+        </div>
+      </div>
     </div>
     <script src="dist/popup.js"></script>
-</body>
+  </body>
 </html>

@@ -1,17 +1,28 @@
-import { TwitterLogo, WassieLogo } from '../components/logos.js';
+import { TwitterLogo, WassieLogo } from "../components/logos.js";
 
-// Set the SVGs as the innerHTML of the buttons
-document.getElementById('twitter-logo-button').innerHTML = TwitterLogo('#000');
-document.getElementById('wassie-logo-button').innerHTML = WassieLogo('#000');
+// Set the SVGs as the innerHTML of the wrappers
+document.getElementById("twitter-logo-wrapper").innerHTML = TwitterLogo("#000");
+document.getElementById("wassie-logo-wrapper").innerHTML = WassieLogo("#000");
 
-// Event listener for the enabled toggle button
-document.getElementById('enabled-toggle').addEventListener('click', function() {
-    this.classList.toggle('active');
+let isEnabled;
+
+let enabledButton = document.getElementById('enabled-toggle');
+let enabledImage = document.getElementById('enabled-status-icon');
+let enabledLabel = enabledButton.querySelector('span');
+
+// Load the state from storage when the popup is opened
+chrome.storage.sync.get(['enabled'], function(result) {
+    isEnabled = result.hasOwnProperty('enabled') ? result.enabled : true;
+    enabledButton.classList.toggle('enabled', isEnabled);
+    enabledImage.src = isEnabled ? "images/enabled.png" : "images/disabled.png";
+    enabledLabel.textContent = isEnabled ? "Enabled" : "Disabled";
 });
 
-// Event listeners for the logo buttons
-['twitter-logo-button', 'wassie-logo-button'].forEach(function(id) {
-    document.getElementById(id).addEventListener('click', function() {
-        // Do something when the logo button is clicked
-    });
+// Add event listener to toggle enabled status and image
+enabledButton.addEventListener('click', function() {
+    isEnabled = !isEnabled;
+    enabledButton.classList.toggle('enabled', isEnabled);
+    enabledImage.src = isEnabled ? "images/enabled.png" : "images/disabled.png";
+    enabledLabel.textContent = isEnabled ? "Enabled" : "Disabled";
+    chrome.storage.sync.set({enabled: isEnabled});
 });

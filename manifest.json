@@ -3,7 +3,7 @@
   "name": "de-x",
   "description": "This extension replaces the new Twitter logo with the correct one.",
   "version": "1.0",
-  "permissions": ["tabs", "scripting"],
+  "permissions": ["tabs", "scripting", "storage"],
   "host_permissions": ["https://twitter.com/*"],
   "action": {
     "default_icon": {

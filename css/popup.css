@@ -24,29 +24,37 @@ body {
 }
 
 .btn {
-    display: inline-block;
-    margin: 5px;
+    display: flex;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background: #f0f0f0;
+    background: #777;
     text-align: center;
+    align-items: center;
+    width: 100%;
     transition: background 0.3s;
 }
 
 .btn:hover {
-    background: #ddd;
+    background: #CCC;
 }
 
-.btn-toggle span:before {
-    content: '';
+#enabled-toggle img {
+    float: left;
+    margin-right: 10px;
 }
 
-.btn-toggle.active span:before {
-    content: '✓';
+.btn-image {
+    width: 24px;
+    height: 24px;
+    display: block;
+    align-content: left;
+    margin: 5px auto;
 }
 
 .btn-logo {
-    width: 48px;
-    height: 48px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin: 5px auto;
 }
