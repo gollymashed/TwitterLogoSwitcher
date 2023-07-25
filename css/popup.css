@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 300px;
+    height: 600px;
+    padding: 15px;
+}
+
+.popup-header {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-body {
+    padding: 15px;
+}
+
+.popup-footer {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.btn {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f0f0f0;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #ddd;
+}
+
+.btn-toggle span:before {
+    content: '';
+}
+
+.btn-toggle.active span:before {
+    content: '✓';
+}
+
+.btn-logo {
+    width: 48px;
+    height: 48px;
+}

@@ -8,10 +8,11 @@
   "action": {
     "default_icon": {
       "128": "images/icon-128.png"
-    }
+    },
+    "default_popup": "popup.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background.js"
   },
   "icons": {
     "128": "images/icon-128.png"
