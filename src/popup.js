@@ -1,8 +1,8 @@
 import { TwitterLogo, WassieLogo } from "../components/logos.js";
 
 // Set the SVGs as the innerHTML of the wrappers
-document.getElementById("twitter-logo-wrapper").innerHTML = TwitterLogo("#000");
-document.getElementById("wassie-logo-wrapper").innerHTML = WassieLogo("#000");
+document.getElementById("twitter-logo-content").innerHTML = TwitterLogo("#000");
+document.getElementById("wassie-logo-content").innerHTML = WassieLogo("#000");
 
 let isEnabled;
 

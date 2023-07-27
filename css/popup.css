@@ -1,60 +1,132 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .container {
-    width: 300px;
-    height: 600px;
-    padding: 15px;
+  width: 300px;
+  padding: 10px;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
 }
 
 .popup-header {
-    text-align: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ddd;
 }
 
 .popup-body {
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.body-text {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+}
+
+.h3 {
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
 }
 
 .popup-footer {
-    padding: 15px;
-    border-top: 1px solid #ddd;
+  padding-top: 14px;
+  border-top: 1px solid #ddd;
+}
+
+.footer-text {
+  padding: 0px;
+  margin: 0px;
+  font-size: 12px;
+  text-align: center;
 }
 
 .btn {
-    display: flex;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #777;
-    text-align: center;
-    align-items: center;
-    width: 100%;
-    transition: background 0.3s;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #777;
+  text-align: center;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  transition: background 0.3s;
+  cursor: pointer;
 }
 
 .btn:hover {
-    background: #CCC;
+  background: #ccc;
 }
 
 #enabled-toggle img {
-    float: left;
-    margin-right: 10px;
+  float: left;
+  margin-right: 10px;
 }
 
 .btn-image {
-    width: 24px;
-    height: 24px;
-    display: block;
-    align-content: left;
-    margin: 5px auto;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-content: left;
+  margin: 5px;
+}
+
+.radio-btn-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: stretch;
 }
 
 .btn-logo {
-    width: 24px;
-    height: 24px;
-    display: block;
-    margin: 5px auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+}
+
+.logo-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.logo-content {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden-radio {
+  display: none;
+}
+
+.hidden-radio:checked + .logo-wrapper {
+  background-color: green;
+  transition: background-color 0.3s;
+  border-radius: 20px;
 }
