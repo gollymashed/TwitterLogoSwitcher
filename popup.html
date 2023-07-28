@@ -1,53 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Popup</title>
-    <link rel="stylesheet" type="text/css" href="css/popup.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="popup">
-        <div class="popup-header">
-          <h3 class="h3">de-x</h3>
+    <head>
+        <title>Popup</title>
+        <link rel="stylesheet" type="text/css" href="css/popup.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+            rel="stylesheet" />
+    </head>
+    <body class="body">
+        <div class="popup">
+            <div class="popup-header">
+                <h3 class="h3">Twitter Logo Switcher</h3>
+            </div>
+            <div class="popup-body">
+                <div class="settings">
+                    <button id="enabled-toggle" class="btn btn-toggle">
+                        <img
+                            src=""
+                            alt="Enabled Status"
+                            id="enabled-status-icon"
+                            class="btn-image" />
+                        <h4 class="h4"></h4>
+                    </button>
+                    <div class="radio-btn-container">
+                        <label class="btn btn-logo" id="twitter-logo-label">
+                            <input
+                                type="radio"
+                                name="logo"
+                                value="twitter"
+                                class="hidden-radio"
+                                checked />
+                            <div class="logo-wrapper">
+                                <div class="logo-content" id="twitter-logo-content"></div>
+                            </div>
+                        </label>
+                        <label class="btn btn-logo" id="wassie-logo-label">
+                            <input type="radio" name="logo" value="wassie" class="hidden-radio" />
+                            <div class="logo-wrapper">
+                                <div class="logo-content" id="wassie-logo-content"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <p class="footer-text">
+                    created by
+                    <a href="https://twitter.com/gollymashed" class="hyperlink" target="_blank">@gollymashed</a>
+                </p>
+            </div>
         </div>
-        <div class="popup-body">
-          <div class="settings">
-            <button id="enabled-toggle" class="btn btn-toggle">
-              <img
-                src=""
-                alt="Enabled Status"
-                id="enabled-status-icon"
-                class="btn-image"
-              />
-              <span></span>
-            </button>
-            <div class="radio-btn-container">
-                <label class="btn btn-logo" id="twitter-logo-label">
-                  <input type="radio" name="logo" value="twitter" class="hidden-radio" checked />
-                  <div class="logo-wrapper">
-                    <div class="logo-content" id="twitter-logo-content"></div>
-                  </div>
-                </label>
-                <label class="btn btn-logo" id="wassie-logo-label">
-                  <input type="radio" name="logo" value="wassie" class="hidden-radio" />
-                  <div class="logo-wrapper">
-                    <div class="logo-content" id="wassie-logo-content"></div>
-                  </div>
-                </label>
-              </div>
-              
-          </div>
-        </div>
-        <div class="popup-footer">
-          <p class="footer-text">
-            created by
-            <a href="https://twitter.com/gollymashed" target="_blank"
-              >@gollymashed</a
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-    <script src="dist/popup.js"></script>
-  </body>
+        <script src="dist/popup.js"></script>
+    </body>
 </html>
