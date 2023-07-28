@@ -1,16 +1,16 @@
-import { TwitterLogo, WassieLogo } from '../components/logos';
+import { TwitterLogo, WassieLogo, OriginalLogo } from '../components/logos';
 
 let isEnabled;
 let selectedLogo;
-let originalLogo = null;
 
-function generateLogo(colour) {
-    if (selectedLogo === 'twitter') {
-        return TwitterLogo(getLogoColor());
-    } else if (selectedLogo === 'wassie') {
-        return WassieLogo(getLogoColor());
+function generateLogo() {
+    if (isEnabled) {
+        if (selectedLogo === 'wassie') {
+            return WassieLogo(getLogoColor());
+        }
+        return TwitterLogo('#1DA1F2');
     } else {
-        return originalLogo;
+        return OriginalLogo();
     }
 }
 
@@ -28,19 +28,32 @@ function getLogoColor() {
     return '#242e36';
 }
 
-function setLogo() {
-    if (!originalLogo) {
-        const homeLogoLink = document.querySelector('a[href="/home"]');
-        if (homeLogoLink) {
-            originalLogo = homeLogoLink.querySelector('svg').outerHTML;
-        }
-    }
+function generateFavicon() {
     if (isEnabled) {
-        changeLoadingLogo();
-        changeHomeLogo();
-        changeFavicon();
+        if (selectedLogo === 'wassie') {
+            return chrome.runtime.getURL('images/wassie.ico');
+        } else {
+            return `https://abs.twimg.com/favicons/twitter.ico`;
+        }
     } else {
-        restoreOriginalLogo();
+        return `https://abs.twimg.com/favicons/twitter.3.ico`;
+    }
+}
+
+function updateSelection() {
+    changeLoadingLogo();
+    changeHomeLogo();
+    changeFavicon();
+    changeSiteTitle();
+}
+
+function changeLoadingLogo() {
+    const loadingLogo = document.querySelector('#placeholder svg');
+    if (loadingLogo) {
+        const newLogo = loadingLogo.cloneNode(true);
+        const newLogoContent = generateLogo();
+        newLogo.innerHTML = newLogoContent;
+        loadingLogo.outerHTML = newLogo.outerHTML;
     }
 }
 
@@ -48,41 +61,46 @@ function changeHomeLogo() {
     const homeLogoLink = document.querySelector('a[href="/home"]');
     if (homeLogoLink) {
         const newLogo = homeLogoLink.querySelector('svg').cloneNode(true);
-        const newLogoContent = generateLogo(getLogoColor());
+        const newLogoContent = generateLogo();
         newLogo.innerHTML = newLogoContent;
         homeLogoLink.querySelector('svg').outerHTML = newLogo.outerHTML;
-    }
-}
-
-function changeLoadingLogo() {
-    const loadingLogo = document.querySelector('#placeholder svg');
-    if (loadingLogo) {
-        const newLogo = loadingLogo.cloneNode(true);
-        const newLogoContent = generateLogo(getLogoColor());
-        newLogo.innerHTML = newLogoContent;
-        loadingLogo.outerHTML = newLogo.outerHTML;
     }
 }
 
 function changeFavicon() {
     const faviconLink = document.querySelector('link[rel="shortcut icon"]');
     if (faviconLink) {
-        faviconLink.href = 'https://abs.twimg.com/favicons/twitter.ico';
+        faviconLink.href = generateFavicon();
     }
 }
 
-function restoreOriginalLogo() {
-    const homeLogoLink = document.querySelector('a[href="/home"]');
-    if (homeLogoLink) {
-        homeLogoLink.querySelector('svg').outerHTML = originalLogo;
+function changeSiteTitle() {
+    const siteTitle = document.querySelector('title');
+    if (siteTitle) {
+        if (siteTitle.textContent.endsWith('/ X')) {
+            replaceTitleString('/ X');
+        } else if (siteTitle.textContent.endsWith('/ Wasser')) {
+            replaceTitleString('/ Wasser');
+        } else if (siteTitle.textContent.endsWith('/ Twitter')) {
+            replaceTitleString('/ Twitter');
+        }
     }
-    const loadingLogo = document.querySelector('#placeholder svg');
-    if (loadingLogo) {
-        loadingLogo.outerHTML = originalLogo;
-    }
-    const faviconLink = document.querySelector('link[rel="shortcut icon"]');
-    if (faviconLink) {
-        faviconLink.href = 'https://abs.twimg.com/favicons/twitter.ico';
+}
+
+function replaceTitleString(StringToReplace) {
+    const title = document.querySelector('title');
+    if (title) {
+        const titleString = title.textContent;
+        const newTitleString = titleString.substring(
+            0,
+            titleString.length - StringToReplace.length
+        );
+        const newTitleEnding = isEnabled
+            ? selectedLogo === 'wassie'
+                ? '/ Wasser'
+                : '/ Twitter'
+            : '/ X';
+        title.textContent = newTitleString + newTitleEnding;
     }
 }
 
@@ -90,7 +108,7 @@ function restoreOriginalLogo() {
 chrome.storage.sync.get(['enabled', 'selectedLogo'], function (result) {
     isEnabled = result.hasOwnProperty('enabled') ? result.enabled : true;
     selectedLogo = result.hasOwnProperty('selectedLogo') ? result.selectedLogo : 'twitter';
-    setLogo();
+    updateSelection();
 });
 
 // Listen for changes in storage
@@ -103,7 +121,7 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
             } else if (key === 'selectedLogo') {
                 selectedLogo = storageChange.newValue;
             }
-            setLogo();
+            updateSelection();
         }
     }
 });
