@@ -74,6 +74,7 @@ body {
     border: none;
     background: #5E51B0;
     -webkit-box-shadow: inset 0 0 60px 15px #261B70;
+    box-shadow: inset 0 0 60px 15px #261B70;
     opacity: 0.6;
     text-align: center;
     align-items: center;
@@ -87,11 +88,13 @@ body {
 .btn.enabled:hover {
     background: #f2e5ff;
     -webkit-box-shadow: inset 0 0 60px 15px #9990D6;
+    box-shadow: inset 0 0 60px 15px #9990D6;
     opacity: 1;
 }
 
 .btn-toggle {
     -webkit-box-shadow: none;
+    box-shadow: none;
     gap: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -104,6 +107,7 @@ body {
 .btn-logo.enabled {
     background: #9C8DFC;
     -webkit-box-shadow: inset 0 0 60px 15px #6153BD;
+    box-shadow: inset 0 0 60px 15px #6153BD;
     opacity: 1;
 }
 
