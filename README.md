@@ -29,7 +29,7 @@ To get started with this project, follow these steps:
 5. Load the extension into your browser:
     - Open the Extension Management page by navigating to `chrome://extensions`.
     - Enable Developer Mode by clicking the toggle switch at the top right.
-    - Click the LOAD UNPACKED button and select the `dist` directory.
+    - Click the LOAD UNPACKED button and select the `TwitterLogoSwitcher` directory.
 
 ## License
 
